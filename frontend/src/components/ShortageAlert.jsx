@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ShieldAlert, Search, CheckCircle2, Loader2 } from "lucide-react";
 import { getShortageRisk } from "../services/api";
 
-export default function ShortageAlert({
-  facilityId = 4,
-  onSelectMedicine,
-  onCheckNearby,
-}) {
+export default function ShortageAlert({ facilityId = 4 }) {
+  const navigate = useNavigate();
   const [risks, setRisks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,11 +32,7 @@ export default function ShortageAlert({
   }, [facilityId]);
 
   const handleCheckNearby = (medicineId) => {
-    if (onSelectMedicine) {
-      onSelectMedicine(medicineId);
-    } else if (onCheckNearby) {
-      onCheckNearby(medicineId);
-    }
+    navigate(`/facility/nearby/${medicineId}`);
   };
 
   if (loading) {

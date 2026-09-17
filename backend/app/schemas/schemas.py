@@ -82,6 +82,7 @@ class RequestCreate(BaseModel):
     medicine_id: int
     quantity: int = Field(..., gt=0, description="Quantity must be greater than 0")
     emergency_level: EmergencyLevel
+    reason: Optional[str] = None
 
 
 class SupplierRequestCreate(RequestCreate):
@@ -105,6 +106,7 @@ class RequestOut(BaseModel):
     emergency_level: EmergencyLevel
     status: RequestStatus
     current_stock: Optional[float] = None
+    reason: Optional[str] = None
     created_at: datetime
     facility_name: Optional[str] = None
     medicine_name: Optional[str] = None
@@ -139,6 +141,7 @@ class PrioritizedRequestItem(BaseModel):
     quantity: float
     emergency_level: str
     status: str
+    reason: Optional[str] = None
     created_at: Optional[str] = None
     priority_score: float
     days_remaining: float

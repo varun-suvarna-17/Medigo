@@ -130,6 +130,7 @@ export default function SupplierDashboard() {
                   <th className="py-3.5 px-4 sm:px-6 text-right">Quantity</th>
                   <th className="py-3.5 px-4 sm:px-6 text-center">Emergency Level</th>
                   <th className="py-3.5 px-4 sm:px-6 text-center">Priority Score</th>
+                  <th className="py-3.5 px-4 sm:px-6">Reason / Context</th>
                   <th className="py-3.5 px-4 sm:px-6 text-center">Status / Actions</th>
                 </tr>
               </thead>
@@ -165,6 +166,15 @@ export default function SupplierDashboard() {
                             ? Number(req.priority_score).toFixed(1)
                             : "N/A"}
                         </span>
+                      </td>
+                      <td className="py-3.5 px-4 sm:px-6 text-xs text-dark/80 max-w-xs">
+                        {req.reason ? (
+                          <span className="line-clamp-2" title={req.reason}>
+                            {req.reason}
+                          </span>
+                        ) : (
+                          <span className="text-dark/40 italic">No context specified</span>
+                        )}
                       </td>
                       <td className="py-3.5 px-4 sm:px-6 text-center">
                         {isPending ? (

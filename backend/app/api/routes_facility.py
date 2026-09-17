@@ -139,6 +139,7 @@ def create_facility_request(
         medicine_id=payload.medicine_id,
         quantity=payload.quantity,
         emergency_level=payload.emergency_level,
+        reason=payload.reason,
         status=RequestStatus.PENDING,
         current_stock=medicine.current_stock,
         created_at=datetime.utcnow()
@@ -156,6 +157,7 @@ def create_facility_request(
         emergency_level=new_request.emergency_level,
         status=new_request.status,
         current_stock=new_request.current_stock,
+        reason=new_request.reason,
         created_at=new_request.created_at,
         facility_name=facility.name,
         medicine_name=medicine.name

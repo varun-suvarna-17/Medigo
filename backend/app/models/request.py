@@ -1,6 +1,6 @@
 import enum
 from datetime import datetime
-from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime, Enum as SQLEnum
+from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime, Text, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
 from app.db.database import Base
@@ -39,6 +39,7 @@ class Request(Base):
         default=RequestStatus.PENDING
     )
     current_stock = Column(Float, nullable=True, default=0.0)
+    reason = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     facility = relationship("Facility", back_populates="requests")

@@ -18,6 +18,12 @@ with engine.connect() as conn:
         conn.commit()
     except Exception:
         pass  # Column already exists
+    try:
+        from sqlalchemy import text
+        conn.execute(text("ALTER TABLE requests ADD COLUMN reason TEXT"))
+        conn.commit()
+    except Exception:
+        pass  # Column already exists
 
 app = FastAPI(title="Medicine Shortage Platform")
 

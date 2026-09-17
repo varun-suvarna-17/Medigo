@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Building2 } from "lucide-react";
 import Dashboard from "../components/Dashboard";
 import ShortageAlert from "../components/ShortageAlert";
-import NearbyMap from "../components/NearbyMap";
 
 export default function FacilityHome() {
-  const [selectedMedicineId, setSelectedMedicineId] = useState(null);
   const facilityId = 4;
 
   return (
@@ -43,17 +40,7 @@ export default function FacilityHome() {
           <Dashboard facilityId={facilityId} />
 
           {/* Section 2: Shortage Risk Alerts */}
-          <ShortageAlert
-            facilityId={facilityId}
-            onSelectMedicine={setSelectedMedicineId}
-            onCheckNearby={setSelectedMedicineId}
-          />
-
-          {/* Section 3: Nearby Availability & Supplier Request */}
-          <NearbyMap
-            facilityId={facilityId}
-            medicine_id={selectedMedicineId}
-          />
+          <ShortageAlert facilityId={facilityId} />
         </div>
       </div>
     </div>

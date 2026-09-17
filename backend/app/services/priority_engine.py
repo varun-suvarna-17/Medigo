@@ -146,6 +146,7 @@ def get_prioritized_requests(
                 emergency_level=req.emergency_level,
                 status=req.status,
                 current_stock=req.current_stock if req.current_stock is not None else (med.current_stock if med else None),
+                reason=req.reason,
                 created_at=req.created_at,
                 facility_name=fac.name if fac else None,
                 medicine_name=med.name if med else None,
